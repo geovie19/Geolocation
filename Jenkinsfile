@@ -4,9 +4,9 @@ pipeline {
         maven 'M2_HOME'
     }
     environment {
-    registry = '676334272140.dkr.ecr.us-east-1.amazonaws.com/devop_repository'						
+    registry = '676334272140.dkr.ecr.us-east-2.amazonaws.com/devop_repository'						
 
-    registryCredential = 'jenkins-ecr'
+    registryCredential = 'geovie19'
     dockerimage = ''
   }
     stages {
