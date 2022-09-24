@@ -4,7 +4,7 @@ pipeline {
         maven 'M2_HOME'
     }
     environment {
-    registry = '676334272140.dkr.ecr.us-east-1.amazonaws.com/devop_repository'						
+    registry = '676334272140.dkr.ecr.us-east-1.amazonaws.com/ernesto'						
 
     registryCredential = 'geovie19'
     dockerimage = ''
