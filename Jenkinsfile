@@ -32,14 +32,22 @@ pipeline {
                 } 
             }
         }
-        stage('Deploy image') {
-            steps{
-                script{ 
-                    docker.withRegistry("https://"+registry,"ecr:us-east-1:"+registryCredential) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }  
-    }
-}
+        stage('upload war to Nexus') {
+          steps(
+            nexusArtifactUploader artifacts: [
+                [
+                    artifactId: 'bioMedical', 
+                    classifier: '', 
+                    file: 'target/bioMedical-2.2.4.war',
+                    type: 'war'
+                ]
+            ],
+            credentialsId: 'nexus3', 
+            groupId: 'org.springframework.boot', 
+            nexusUrl: '192.168.33.158:8081', 
+            nexusVersion: 'nexus2', 
+            protocol: 'http', repository: 'http://192.168.33.158:8081/repository/nexus-test/', 
+            version: '2.2.4'    
+          }  
+        }
+ }
