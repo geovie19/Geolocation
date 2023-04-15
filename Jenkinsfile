@@ -33,8 +33,8 @@ pipeline {
             }
         }
         stage('upload war to Nexus') {
-          steps(
-            nexusArtifactUploader artifacts: [
+          steps {
+            nexusArtifactUploader artifacts:[
                 [
                     artifactId: 'bioMedical', 
                     classifier: '', 
