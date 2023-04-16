@@ -38,8 +38,8 @@ pipeline {
                 [
                     artifactId: 'bioMedical', 
                     classifier: '', 
-                    file: 'target/bioMedical-2.2.4.war',
-                    type: 'war'
+                    file: 'target/bioMedical-2.2.4',
+                    type: 'image'
                 ]
             ],
             credentialsId: 'nexus3', 
