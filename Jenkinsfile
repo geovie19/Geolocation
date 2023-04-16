@@ -42,11 +42,12 @@ pipeline {
                     type: 'image'
                 ]
             ],
-            credentialsId: 'nexus3', 
+            credentialsId: 'nexus2', 
             groupId: 'org.springframework.boot', 
             nexusUrl: '192.168.33.158:8081', 
-            nexusVersion: 'nexus2', 
-            protocol: 'http', repository: 'http://192.168.33.158:8081/repository/nexus-test/', 
+            nexusVersion: 'nexus3', 
+            protocol: 'http', 
+            repository: 'nexus-test/', 
             version: '2.2.4'    
           }  
         }
