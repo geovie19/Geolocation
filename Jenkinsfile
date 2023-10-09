@@ -32,24 +32,14 @@ pipeline {
                 } 
             }
         }
-        stage('upload war to Nexus') {
-          steps {
-            nexusArtifactUploader artifacts:[
-                [
-                    artifactId: 'bioMedical', 
-                    classifier: '', 
-                    file: 'target/bioMedical-2.2.4',
-                    type: 'image'
-                ]
-            ],
-            credentialsId: 'nexus2', 
-            groupId: 'org.springframework.boot', 
-            nexusUrl: '192.168.33.158:8081', 
-            nexusVersion: 'nexus3', 
-            protocol: 'http', 
-            repository: 'nexus-test/', 
-            version: '2.2.4'    
-          }  
+        stage('Pushing to ECR') {
+            steps{
+                script {
+                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 792069373652.dkr.ecr.us-east-1.amazonaws.com'
+                    sh 'docker push 792069373652.dkr.ecr.us-east-1.amazonaws.com/carolle'
+                }
+            }
         }
- }
-}
+    }
+}  
+    
