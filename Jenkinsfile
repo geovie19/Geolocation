@@ -4,7 +4,7 @@ pipeline {
         maven 'M2_HOME'
     }
     environment {
-    registry = '676334272140.dkr.ecr.us-east-1.amazonaws.com/ernesto'						
+    registry = '017589840041.dkr.ecr.us-east-1.amazonaws.com/my-ecr'						
 
     registryCredential = 'jenkins'
     dockerimage = ''
@@ -35,8 +35,8 @@ pipeline {
         stage('Pushing to ECR') {
             steps{
                 script {
-                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 792069373652.dkr.ecr.us-east-1.amazonaws.com'
-                    sh 'docker push 792069373652.dkr.ecr.us-east-1.amazonaws.com/carolle'
+                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 017589840041.dkr.ecr.us-east-1.amazonaws.com'
+                    sh 'docker push 017589840041.dkr.ecr.us-east-1.amazonaws.com/my-ecr'
                 }
             }
         }
